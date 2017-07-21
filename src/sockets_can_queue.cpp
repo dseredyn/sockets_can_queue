@@ -42,6 +42,7 @@ public:
 
     void initialize(const std::string& dev_name, const std::vector<std::pair<uint32_t, uint32_t > >& filters);
     bool send(uint16_t can_id, uint16_t len, const int8_t *data);
+    bool readQueue();
     bool readReply(uint16_t can_id, uint16_t &dlc, int8_t *data);
 
 private:
@@ -61,6 +62,10 @@ void SocketsCanQueue::initialize(const std::string& dev_name, const std::vector<
 
 bool SocketsCanQueue::send(uint16_t can_id, uint16_t len, const int8_t *data) {
     return can_dev_->send(can_id, len, reinterpret_cast<const uint8_t* >(data));
+}
+
+bool SocketsCanQueue::readQueue() {
+    return true;
 }
 
 bool SocketsCanQueue::readReply(uint16_t can_id, uint16_t &dlc, int8_t *data_out) {
