@@ -6,7 +6,7 @@ project(sockets_can_queue)
 find_package(catkin REQUIRED COMPONENTS
   rtt_ros
   common_interfaces
-  common_behavior
+  subsystem_common
   controller_common
   can_driver
   )
