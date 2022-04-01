@@ -43,6 +43,7 @@ public:
     void initialize(const std::string& dev_name, const std::vector<std::pair<uint32_t, uint32_t > >& filters);
     bool send(uint16_t can_id, uint16_t len, const int8_t *data);
     bool readQueue();
+    int getFramesCount() const;
     bool readReply(uint16_t can_id, uint16_t &dlc, int8_t *data);
 
 private:
@@ -66,6 +67,10 @@ bool SocketsCanQueue::send(uint16_t can_id, uint16_t len, const int8_t *data) {
 
 bool SocketsCanQueue::readQueue() {
     return true;
+}
+
+int SocketsCanQueue::getFramesCount() const {
+    return -1;
 }
 
 bool SocketsCanQueue::readReply(uint16_t can_id, uint16_t &dlc, int8_t *data_out) {
